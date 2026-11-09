@@ -1,3 +1,18 @@
+/* =======================================================
+   TOKENS DE DISEÑO — paleta "cromo + azul" estilo Frutiger Aero
+   ======================================================= */
+:root{
+    --cromo-claro: #eef3f7;
+    --cromo-medio: #c7d3dc;
+    --cromo-sombra: #8fa3b3;
+    --azul-cielo: #3ab6e8;
+    --azul-profundo: #0a4d8c;
+    --vidrio: rgba(255,255,255,0.55);
+    --vidrio-fuerte: rgba(255,255,255,0.8);
+    --brillo-agua: #baf7ff;
+    --texto-oscuro: #1b2b38;
+}
+
 /* RESET GENERAL */
 *{
     margin: 0;
@@ -7,53 +22,167 @@
 
 /* ESTILO GENERAL DEL SITIO */
 body{
-    background: #f1f5f9;
+    background: linear-gradient(180deg, #bfe6f7 0%, #eef3f7 35%, #f6f9fb 100%);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    transition: background 0.3s ease, color 0.3s ease;
-}
-
-/* HEADER */
-header{
-    background: linear-gradient(135deg, #2563eb, #7c3aed);
-    color: white;
-    height: 100px;
-    text-align: center;
-    line-height: 100px;
-    font-size: 28px;
-    font-weight: bold;
+    color: var(--texto-oscuro);
+    transition: background 0.4s ease, color 0.4s ease;
+    overflow-x: hidden;
     position: relative;
 }
 
-/* MENU NAVEGACION */
+/* =======================================================
+   HEADER — vidrio azul con nubes y destello de luz
+   ======================================================= */
+header{
+    background: linear-gradient(160deg, #1b78c4 0%, var(--azul-profundo) 55%, #08345f 100%);
+    color: white;
+    height: 130px;
+    text-align: center;
+    line-height: 130px;
+    font-size: 30px;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 -6px 14px rgba(0,0,0,0.25), 0 3px 10px rgba(0,0,0,0.2);
+}
+
+header h1{
+    position: relative;
+    z-index: 3;
+    text-shadow: 0 2px 2px rgba(0,0,0,0.4), 0 0 18px rgba(186,247,255,0.6);
+    letter-spacing: 0.5px;
+}
+
+/* Destello de luz tipo "lens flare" en la esquina superior derecha */
+.destello{
+    position: absolute;
+    top: -60px;
+    right: -40px;
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.25) 35%, rgba(255,255,255,0) 70%);
+    border-radius: 50%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Nubes de CSS puro: cada una son 3 circulos pegados */
+.nube{
+    position: absolute;
+    background: rgba(255,255,255,0.35);
+    border-radius: 50px;
+    z-index: 2;
+    pointer-events: none;
+}
+.nube::before, .nube::after{
+    content: "";
+    position: absolute;
+    background: rgba(255,255,255,0.35);
+    border-radius: 50%;
+}
+
+.nube-1{
+    width: 90px; height: 30px; top: 20px; left: -120px;
+    animation: flotar-nube 28s linear infinite;
+}
+.nube-1::before{ width: 45px; height: 45px; top: -20px; left: 10px; }
+.nube-1::after{ width: 35px; height: 35px; top: -14px; left: 45px; }
+
+.nube-2{
+    width: 60px; height: 22px; top: 70px; left: -90px;
+    animation: flotar-nube 40s linear infinite;
+    animation-delay: -12s;
+}
+.nube-2::before{ width: 30px; height: 30px; top: -14px; left: 8px; }
+.nube-2::after{ width: 24px; height: 24px; top: -10px; left: 30px; }
+
+.nube-3{
+    width: 75px; height: 26px; top: 10px; left: -100px;
+    animation: flotar-nube 34s linear infinite;
+    animation-delay: -22s;
+}
+.nube-3::before{ width: 38px; height: 38px; top: -16px; left: 8px; }
+.nube-3::after{ width: 28px; height: 28px; top: -10px; left: 38px; }
+
+@keyframes flotar-nube{
+    from{ transform: translateX(0); }
+    to{ transform: translateX(160vw); }
+}
+
+/* Boton modo oscuro */
+.btn-modo-oscuro{
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 4;
+    background: linear-gradient(180deg, rgba(255,255,255,0.75), rgba(255,255,255,0.15));
+    border: 1px solid rgba(255,255,255,0.6);
+    color: var(--azul-profundo);
+    font-size: 20px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    line-height: normal;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3), inset 0 1px 2px rgba(255,255,255,0.9);
+}
+
+.btn-modo-oscuro:hover{
+    transform: translateY(-50%) scale(1.08);
+}
+
+/* =======================================================
+   MENU DE NAVEGACION — barra cromada con botones "gel"
+   ======================================================= */
 nav{
-    background: #0ea5e9;
-    height: 50px;
-    border-bottom: 3px solid #0369a1;
+    background: linear-gradient(180deg, var(--cromo-claro) 0%, var(--cromo-medio) 50%, var(--cromo-sombra) 100%);
+    height: 56px;
+    border-bottom: 2px solid #6d8494;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.8);
+    position: relative;
+    z-index: 5;
+}
+
+nav ul{
+    display: flex;
+    justify-content: center;
+    height: 100%;
 }
 
 nav ul li{
     float: left;
     list-style: none;
-    margin: 10px 20px;
+    margin: 9px 8px;
     line-height: 30px;
 }
 
 nav ul li a{
-    color: white;
+    display: block;
+    padding: 0 16px;
+    color: #0a3a66;
     text-decoration: none;
     font-weight: bold;
-    padding-bottom: 4px;
-    transition: color 0.2s ease, border-bottom 0.2s ease;
+    font-size: 14px;
+    border-radius: 16px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.3) 45%, rgba(255,255,255,0.1) 55%, rgba(200,225,240,0.4) 100%);
+    border: 1px solid rgba(255,255,255,0.7);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.9);
+    transition: all 0.2s ease;
 }
 
 nav ul li a:hover{
-    color: #fde047;
+    color: #06294a;
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.5) 45%, var(--brillo-agua) 100%);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,1);
+    transform: translateY(-1px);
 }
 
 /* Enlace activo (la seccion que estamos viendo ahora) - lo controla script.js */
 nav ul li a.activo{
-    color: #fde047;
-    border-bottom: 2px solid #fde047;
+    background: linear-gradient(180deg, #7fe0ff 0%, var(--azul-cielo) 60%, var(--azul-profundo) 100%);
+    color: white;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.3);
 }
 
 /* LIMPIAR FLOTANTES */
@@ -61,184 +190,286 @@ nav ul li a.activo{
     clear: both;
 }
 
-/* CONTENIDO PRINCIPAL */
+/* =======================================================
+   CONTENIDO PRINCIPAL — panel vidrioso
+   ======================================================= */
 #content{
     float: left;
     width: 80%;
-    background: white;
+    background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(240,248,252,0.85));
     min-height: 500px;
     padding: 25px;
-    border-radius: 8px;
+    border-radius: 14px;
+    margin: 18px 0 18px 18px;
+    box-shadow: 0 6px 20px rgba(10,77,140,0.15), inset 0 1px 0 rgba(255,255,255,0.9);
+    border: 1px solid rgba(255,255,255,0.8);
+    position: relative;
+    z-index: 2;
 }
 
-/* ARTICULOS */
+/* ARTICULOS: cada uno como una "tarjeta de cristal" con marco cromado */
 .article{
-    color: #334155;
+    color: var(--texto-oscuro);
     margin-top: 15px;
     margin-bottom: 15px;
-    border-bottom: 2px solid #e2e8f0;
-    padding-bottom: 12px;
+    padding: 16px;
+    border-radius: 10px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(210,230,245,0.35));
+    border: 1px solid rgba(255,255,255,0.9);
+    border-bottom: 3px solid var(--cromo-sombra);
+    box-shadow: 0 3px 10px rgba(10,77,140,0.08);
 }
 
-/* BARRA LATERAL */
+.article h2{
+    color: var(--azul-profundo);
+    text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+}
+
+/* =======================================================
+   BARRA LATERAL — panel de cromo con reflejo de vidrio
+   ======================================================= */
 aside{
     float: left;
     width: 20%;
-    background: linear-gradient(180deg, #38bdf8, #0ea5e9);
+    background: linear-gradient(160deg, #4fc3ea 0%, var(--azul-cielo) 45%, var(--azul-profundo) 100%);
     color: white;
     min-height: 500px;
     padding: 20px;
+    margin: 18px 18px 18px 0;
+    border-radius: 14px;
+    box-shadow: 0 6px 20px rgba(10,77,140,0.25), inset 0 1px 0 rgba(255,255,255,0.5);
+    position: relative;
+    overflow: hidden;
 }
 
-/* FOOTER */
-footer{
-    background: #1e293b;
-    color: white;
-    text-align: center;
-    height: 50px;
-    line-height: 50px;
-    margin-top: 10px;
-}
-
-
-/* =======================================================
-   DESDE AQUI: estilos nuevos para las funciones de JavaScript
-   ======================================================= */
-
-/* --- Boton modo oscuro (dentro del header) --- */
-.btn-modo-oscuro{
+/* Reflejo de vidrio diagonal sobre la barra lateral */
+aside::before{
+    content: "";
     position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255,255,255,0.15);
-    border: none;
-    color: white;
-    font-size: 20px;
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    cursor: pointer;
-    line-height: normal;
+    top: -20%;
+    left: -40%;
+    width: 60%;
+    height: 160%;
+    background: rgba(255,255,255,0.25);
+    transform: rotate(20deg);
+    pointer-events: none;
 }
 
-.btn-modo-oscuro:hover{
-    background: rgba(255,255,255,0.3);
+aside h2{
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    position: relative;
+    z-index: 2;
 }
 
-/* --- Formulario de busqueda: input y mensajes --- */
+/* --- Formulario de busqueda --- */
+#form-busqueda{
+    position: relative;
+    z-index: 2;
+}
+
 #input-busqueda{
     width: 100%;
-    padding: 8px;
-    border-radius: 4px;
-    border: none;
-    margin-bottom: 8px;
+    padding: 9px 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.7);
+    margin-bottom: 10px;
+    background: rgba(255,255,255,0.85);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.25);
 }
 
 aside input[type="submit"]{
-    background: #1e293b;
-    color: white;
-    border: none;
-    padding: 8px 14px;
-    border-radius: 4px;
+    width: 100%;
+    background: linear-gradient(180deg, #ffffff 0%, #d7e9f5 45%, #9fc9e3 55%, #5ea8cf 100%);
+    color: var(--azul-profundo);
+    font-weight: bold;
+    border: 1px solid rgba(255,255,255,0.8);
+    padding: 9px 14px;
+    border-radius: 20px;
     cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.9);
+    transition: transform 0.15s ease;
 }
 
 aside input[type="submit"]:hover{
-    background: #0f172a;
+    transform: translateY(-1px);
+}
+
+aside input[type="submit"]:active{
+    transform: translateY(1px);
 }
 
 .mensaje-busqueda{
     margin-top: 10px;
     font-size: 14px;
     font-weight: bold;
+    position: relative;
+    z-index: 2;
 }
 
-.mensaje-busqueda.error{
-    color: #fecaca;
-}
+.mensaje-busqueda.error{ color: #ffd9d9; }
+.mensaje-busqueda.exito{ color: #d9fff0; }
 
-.mensaje-busqueda.exito{
-    color: #dcfce7;
-}
-
-/* --- Imagenes clicleables (galeria) --- */
+/* =======================================================
+   GALERIA DE IMAGENES
+   ======================================================= */
 .img-galeria{
     cursor: zoom-in;
+    border-radius: 8px;
+    border: 3px solid white;
+    box-shadow: 0 3px 10px rgba(10,77,140,0.25);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .img-galeria:hover{
-    transform: scale(1.03);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    transform: scale(1.04) rotate(-1deg);
+    box-shadow: 0 6px 16px rgba(10,77,140,0.35);
 }
 
-/* --- Lightbox: fondo oscuro que cubre toda la pantalla --- */
 .lightbox{
-    display: none; /* oculto hasta que se haga clic en una imagen */
+    display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.85);
+    background: rgba(5,25,45,0.88);
     z-index: 1000;
     justify-content: center;
     align-items: center;
     cursor: zoom-out;
 }
 
-.lightbox.activo{
-    display: flex;
-}
+.lightbox.activo{ display: flex; }
 
 .lightbox img{
     max-width: 90%;
     max-height: 85%;
-    border-radius: 8px;
-    box-shadow: 0 0 25px rgba(0,0,0,0.5);
+    border-radius: 10px;
+    border: 4px solid white;
+    box-shadow: 0 0 35px rgba(186,247,255,0.5);
 }
 
-/* --- Boton flotante "volver arriba" --- */
+/* =======================================================
+   BOTON FLOTANTE "VOLVER ARRIBA" — orbe de gel
+   ======================================================= */
 .btn-arriba{
     position: fixed;
     bottom: 25px;
     right: 25px;
-    width: 46px;
-    height: 46px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    border: none;
-    background: #2563eb;
+    border: 1px solid rgba(255,255,255,0.8);
+    background: linear-gradient(180deg, #ffffff 0%, #8fd9f5 45%, var(--azul-cielo) 60%, var(--azul-profundo) 100%);
     color: white;
     font-size: 20px;
     cursor: pointer;
-    display: none; /* lo muestra el JS cuando bajamos a hacer scroll */
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    display: none;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.9);
     z-index: 900;
+    transition: transform 0.15s ease;
 }
 
-.btn-arriba.visible{
-    display: block;
-}
+.btn-arriba.visible{ display: block; }
+.btn-arriba:hover{ transform: scale(1.08); }
 
-.btn-arriba:hover{
-    background: #1d4ed8;
+/* =======================================================
+   FOOTER — tira de metal cepillado
+   ======================================================= */
+footer{
+    background: repeating-linear-gradient(100deg, #cfd9e0, #cfd9e0 2px, #e4ebf0 3px, #e4ebf0 4px), linear-gradient(180deg, #d6dee4, #9aacb8);
+    color: var(--azul-profundo);
+    text-align: center;
+    height: 54px;
+    line-height: 54px;
+    margin-top: 10px;
+    font-weight: bold;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.6);
+    border-top: 1px solid rgba(255,255,255,0.8);
 }
 
 /* =======================================================
-   MODO OSCURO: se activa agregando la clase "modo-oscuro" al <body>
+   CAPA DE BURBUJAS ANIMADAS (las crea script.js)
+   ======================================================= */
+.capa-burbujas{
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.burbuja{
+    position: absolute;
+    bottom: -60px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.95), rgba(186,247,255,0.35) 45%, rgba(58,182,232,0.15) 75%, transparent 100%);
+    border: 1px solid rgba(255,255,255,0.5);
+    animation-name: subir-burbuja;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes subir-burbuja{
+    0%{ transform: translateY(0) translateX(0); opacity: 0; }
+    10%{ opacity: 0.9; }
+    90%{ opacity: 0.6; }
+    100%{ transform: translateY(-115vh) translateX(20px); opacity: 0; }
+}
+
+/* =======================================================
+   MODO OSCURO AERO — azul noche profundo en vez de blanco/cromo
    ======================================================= */
 body.modo-oscuro{
-    background: #0f172a;
-    color: #e2e8f0;
+    background: linear-gradient(180deg, #06182c 0%, #0a2744 45%, #0f3357 100%);
+    color: #dceefb;
 }
 
 body.modo-oscuro #content{
-    background: #1e293b;
-    color: #e2e8f0;
+    background: linear-gradient(180deg, rgba(16,40,64,0.9), rgba(10,30,52,0.9));
+    border-color: rgba(255,255,255,0.15);
 }
 
 body.modo-oscuro .article{
-    border-bottom-color: #334155;
+    background: linear-gradient(180deg, rgba(40,70,100,0.5), rgba(20,45,70,0.4));
+    border-bottom-color: #2f5878;
 }
 
+body.modo-oscuro .article h2,
 body.modo-oscuro #content h2{
-    color: #e2e8f0;
+    color: var(--brillo-agua);
+}
+
+body.modo-oscuro nav{
+    background: linear-gradient(180deg, #1c3a52, #0d2238);
+    border-bottom-color: #05141f;
+}
+
+body.modo-oscuro nav ul li a{
+    background: linear-gradient(180deg, rgba(255,255,255,0.15), rgba(255,255,255,0.03));
+    color: var(--brillo-agua);
+    border-color: rgba(255,255,255,0.2);
+}
+
+/* =======================================================
+   RESPONSIVE — que no se rompa en pantallas pequeñas
+   ======================================================= */
+@media (max-width: 700px){
+    #content, aside{
+        float: none;
+        width: auto;
+        margin: 14px;
+    }
+    nav ul{
+        flex-wrap: wrap;
+        height: auto;
+        padding: 8px 0;
+    }
+    nav ul li{
+        margin: 4px 6px;
+    }
+    header{
+        height: 110px;
+        line-height: 110px;
+        font-size: 22px;
+    }
 }

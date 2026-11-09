@@ -126,6 +126,35 @@ btnArriba.addEventListener('click', function () {
 
 
 /* -------------------------------------------------------
+   5) BURBUJAS ANIMADAS (estetica Frutiger Aero)
+   ------------------------------------------------------- */
+
+const capaBurbujas = document.getElementById('capa-burbujas');
+const CANTIDAD_BURBUJAS = 18;
+
+for (let i = 0; i < CANTIDAD_BURBUJAS; i++) {
+    const burbuja = document.createElement('div');
+    burbuja.classList.add('burbuja');
+
+    // Tamaño aleatorio entre 10px y 50px
+    const tamano = Math.random() * 40 + 10;
+    burbuja.style.width = tamano + 'px';
+    burbuja.style.height = tamano + 'px';
+
+    // Posicion horizontal aleatoria (0% a 100% del ancho de la pantalla)
+    burbuja.style.left = Math.random() * 100 + 'vw';
+
+    // Duracion y retraso aleatorios para que no suban todas al mismo tiempo
+    const duracion = Math.random() * 12 + 8; // entre 8s y 20s
+    const retraso = Math.random() * 20; // hasta 20s de retraso inicial
+    burbuja.style.animationDuration = duracion + 's';
+    burbuja.style.animationDelay = '-' + retraso + 's';
+
+    capaBurbujas.appendChild(burbuja);
+}
+
+
+/* -------------------------------------------------------
    EXTRA) MODO OSCURO
    ------------------------------------------------------- */
 
