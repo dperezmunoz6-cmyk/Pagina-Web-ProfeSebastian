@@ -190,6 +190,13 @@ nav ul li a.activo{
     clear: both;
 }
 
+/* Contenedor que centra el bloque de contenido+aside en pantallas grandes */
+.contenedor{
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 18px;
+}
+
 /* =======================================================
    CONTENIDO PRINCIPAL — panel vidrioso
    ======================================================= */
