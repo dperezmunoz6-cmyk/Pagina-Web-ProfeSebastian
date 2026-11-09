@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="utf-8">
-    <title>Maquetación CSS</title>
-
-    <!-- AQUI SE CONECTA EL CSS -->
-    <link rel="stylesheet" href="styles.css">
+<meta charset="utf-8">
+<title>Maquetación CSS</title>
+<!-- AQUI SE CONECTA EL CSS -->
+<link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
 
-<header>
+<header id="inicio">
     <h1>Pagina Web increible y super innovadora</h1>
+    <!-- Boton para activar/desactivar el modo oscuro -->
+    <button id="btn-modo-oscuro" class="btn-modo-oscuro" title="Cambiar modo claro/oscuro">🌙</button>
 </header>
 
 <nav>
     <ul>
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Contenido</a></li>
+        <li><a href="#inicio" class="nav-link">Inicio</a></li>
+        <li><a href="#content" class="nav-link">Contenido</a></li>
         <li><a href="#">Requisitos</a></li>
         <li><a href="#">Lenguajes</a></li>
         <li><a href="#">Frameworks</a></li>
@@ -32,19 +31,19 @@
 
     <article class="article">
         <h2>Imagen 1</h2>
-        <img src="bandera.png" style="width:250px; height:100px;">
+        <img src="bandera.png" style="width:250px; height:100px;" class="img-galeria">
         <p>Si si Colombia, si si caribe...</p>
     </article>
 
     <article class="article">
         <h2>Imagen 2</h2>
-        <img src="odst.png" style="width:250px; height:250px;">
+        <img src="odst.png" style="width:250px; height:250px;" class="img-galeria">
         <p>El Covenant se acerca</p>
     </article>
 
     <article class="article">
         <h2>Imagen 3</h2>
-        <img src="pg.png" style="width:250px; height:250px;">
+        <img src="pg.png" style="width:250px; height:250px;" class="img-galeria">
         <p>Pingüino</p>
     </article>
 
@@ -52,9 +51,11 @@
 
 <aside>
     <h2>Barra de busqueda</h2>
-    <form>
-        <input type="text">
+    <form id="form-busqueda">
+        <input type="text" id="input-busqueda" placeholder="Escribe algo...">
         <input type="submit" value="Buscar">
+        <!-- Aqui aparecera el mensaje de error o resultado -->
+        <p id="mensaje-busqueda" class="mensaje-busqueda"></p>
     </form>
 </aside>
 
@@ -63,6 +64,17 @@
 <footer>
     Maquetación con CSS
 </footer>
+
+<!-- Overlay/Lightbox para ampliar imagenes (empieza oculto) -->
+<div id="lightbox" class="lightbox">
+    <img id="lightbox-img" src="" alt="Imagen ampliada">
+</div>
+
+<!-- Boton flotante para volver arriba (empieza oculto via CSS/JS) -->
+<button id="btn-arriba" class="btn-arriba" title="Volver arriba">↑</button>
+
+<!-- AQUI SE CONECTA EL JAVASCRIPT -->
+<script src="script.js"></script>
 
 </body>
 </html>
