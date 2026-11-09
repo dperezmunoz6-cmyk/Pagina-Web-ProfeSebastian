@@ -9,6 +9,7 @@
 body{
     background: #f1f5f9;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 /* HEADER */
@@ -20,6 +21,7 @@ header{
     line-height: 100px;
     font-size: 28px;
     font-weight: bold;
+    position: relative;
 }
 
 /* MENU NAVEGACION */
@@ -40,10 +42,18 @@ nav ul li a{
     color: white;
     text-decoration: none;
     font-weight: bold;
+    padding-bottom: 4px;
+    transition: color 0.2s ease, border-bottom 0.2s ease;
 }
 
 nav ul li a:hover{
     color: #fde047;
+}
+
+/* Enlace activo (la seccion que estamos viendo ahora) - lo controla script.js */
+nav ul li a.activo{
+    color: #fde047;
+    border-bottom: 2px solid #fde047;
 }
 
 /* LIMPIAR FLOTANTES */
@@ -88,4 +98,147 @@ footer{
     height: 50px;
     line-height: 50px;
     margin-top: 10px;
+}
+
+
+/* =======================================================
+   DESDE AQUI: estilos nuevos para las funciones de JavaScript
+   ======================================================= */
+
+/* --- Boton modo oscuro (dentro del header) --- */
+.btn-modo-oscuro{
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: white;
+    font-size: 20px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    cursor: pointer;
+    line-height: normal;
+}
+
+.btn-modo-oscuro:hover{
+    background: rgba(255,255,255,0.3);
+}
+
+/* --- Formulario de busqueda: input y mensajes --- */
+#input-busqueda{
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: none;
+    margin-bottom: 8px;
+}
+
+aside input[type="submit"]{
+    background: #1e293b;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+aside input[type="submit"]:hover{
+    background: #0f172a;
+}
+
+.mensaje-busqueda{
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.mensaje-busqueda.error{
+    color: #fecaca;
+}
+
+.mensaje-busqueda.exito{
+    color: #dcfce7;
+}
+
+/* --- Imagenes clicleables (galeria) --- */
+.img-galeria{
+    cursor: zoom-in;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.img-galeria:hover{
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+/* --- Lightbox: fondo oscuro que cubre toda la pantalla --- */
+.lightbox{
+    display: none; /* oculto hasta que se haga clic en una imagen */
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out;
+}
+
+.lightbox.activo{
+    display: flex;
+}
+
+.lightbox img{
+    max-width: 90%;
+    max-height: 85%;
+    border-radius: 8px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.5);
+}
+
+/* --- Boton flotante "volver arriba" --- */
+.btn-arriba{
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: none;
+    background: #2563eb;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    display: none; /* lo muestra el JS cuando bajamos a hacer scroll */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    z-index: 900;
+}
+
+.btn-arriba.visible{
+    display: block;
+}
+
+.btn-arriba:hover{
+    background: #1d4ed8;
+}
+
+/* =======================================================
+   MODO OSCURO: se activa agregando la clase "modo-oscuro" al <body>
+   ======================================================= */
+body.modo-oscuro{
+    background: #0f172a;
+    color: #e2e8f0;
+}
+
+body.modo-oscuro #content{
+    background: #1e293b;
+    color: #e2e8f0;
+}
+
+body.modo-oscuro .article{
+    border-bottom-color: #334155;
+}
+
+body.modo-oscuro #content h2{
+    color: #e2e8f0;
 }
