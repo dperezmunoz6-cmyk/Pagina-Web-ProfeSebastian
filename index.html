@@ -2,27 +2,24 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<title>Maquetación CSS</title>
+<title>Portal de Cazarrecompensas</title>
+<!-- Fuentes de estilo sci-fi / holograma -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
 <!-- AQUI SE CONECTA EL CSS -->
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <header id="inicio">
-    <!-- Nubes decorativas de CSS puro -->
-    <div class="nube nube-1"></div>
-    <div class="nube nube-2"></div>
-    <div class="nube nube-3"></div>
-    <!-- Destello de luz estilo "lens flare" -->
-    <div class="destello"></div>
+    <!-- Barrido de escaneo tipo holograma -->
+    <div class="barrido"></div>
 
-    <h1>Pagina Web</h1>
-    <!-- Boton para activar/desactivar el modo oscuro -->
-    <button id="btn-modo-oscuro" class="btn-modo-oscuro" title="Cambiar modo claro/oscuro">🌙</button>
+    <h1>Portal de Cazarrecompensas</h1>
 </header>
 
-<!-- Capa de burbujas que flotan por toda la pagina (las crea script.js) -->
-<div id="capa-burbujas" class="capa-burbujas"></div>
+<!-- Capa de particulas/estatica flotando por toda la pagina (las crea script.js) -->
+<div id="capa-particulas" class="capa-particulas"></div>
 
 <nav>
     <ul>
@@ -43,20 +40,29 @@
     <section id="content">
 
         <article class="article">
+            <span class="sello">SE BUSCA</span>
             <h2>Imagen 1</h2>
-            <img src="bandera.png" style="width:250px; height:100px;" class="img-galeria">
+            <div class="marco-holograma">
+                <img src="bandera.png" style="width:250px; height:100px;" class="img-galeria">
+            </div>
             <p>Si si Colombia, si si caribe...</p>
         </article>
 
         <article class="article">
+            <span class="sello">SE BUSCA</span>
             <h2>Imagen 2</h2>
-            <img src="odst.png" style="width:250px; height:250px;" class="img-galeria">
+            <div class="marco-holograma">
+                <img src="odst.png" style="width:250px; height:250px;" class="img-galeria">
+            </div>
             <p>El Covenant se acerca</p>
         </article>
 
         <article class="article">
+            <span class="sello">SE BUSCA</span>
             <h2>Imagen 3</h2>
-            <img src="pg.png" style="width:250px; height:250px;" class="img-galeria">
+            <div class="marco-holograma">
+                <img src="pg.png" style="width:250px; height:250px;" class="img-galeria">
+            </div>
             <p>Pingüino</p>
         </article>
 

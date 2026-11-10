@@ -126,47 +126,29 @@ btnArriba.addEventListener('click', function () {
 
 
 /* -------------------------------------------------------
-   5) BURBUJAS ANIMADAS (estetica Frutiger Aero)
+   5) PARTICULAS DE ESTATICA/DATOS (estetica neo-noir holograma)
    ------------------------------------------------------- */
 
-const capaBurbujas = document.getElementById('capa-burbujas');
-const CANTIDAD_BURBUJAS = 18;
+const capaParticulas = document.getElementById('capa-particulas');
+const CANTIDAD_PARTICULAS = 35;
 
-for (let i = 0; i < CANTIDAD_BURBUJAS; i++) {
-    const burbuja = document.createElement('div');
-    burbuja.classList.add('burbuja');
+for (let i = 0; i < CANTIDAD_PARTICULAS; i++) {
+    const particula = document.createElement('div');
+    particula.classList.add('particula');
 
-    // Tamaño aleatorio entre 10px y 50px
-    const tamano = Math.random() * 40 + 10;
-    burbuja.style.width = tamano + 'px';
-    burbuja.style.height = tamano + 'px';
+    // Tamaño aleatorio entre 1px y 3px (polvo fino, no burbujas grandes)
+    const tamano = Math.random() * 2 + 1;
+    particula.style.width = tamano + 'px';
+    particula.style.height = tamano + 'px';
 
-    // Posicion horizontal aleatoria (0% a 100% del ancho de la pantalla)
-    burbuja.style.left = Math.random() * 100 + 'vw';
+    // Posicion horizontal aleatoria
+    particula.style.left = Math.random() * 100 + 'vw';
 
-    // Duracion y retraso aleatorios para que no suban todas al mismo tiempo
-    const duracion = Math.random() * 12 + 8; // entre 8s y 20s
-    const retraso = Math.random() * 20; // hasta 20s de retraso inicial
-    burbuja.style.animationDuration = duracion + 's';
-    burbuja.style.animationDelay = '-' + retraso + 's';
+    // Duracion y retraso aleatorios para que no caigan todas juntas
+    const duracion = Math.random() * 10 + 10; // entre 10s y 20s
+    const retraso = Math.random() * 20;
+    particula.style.animationDuration = duracion + 's';
+    particula.style.animationDelay = '-' + retraso + 's';
 
-    capaBurbujas.appendChild(burbuja);
+    capaParticulas.appendChild(particula);
 }
-
-
-/* -------------------------------------------------------
-   EXTRA) MODO OSCURO
-   ------------------------------------------------------- */
-
-const btnModoOscuro = document.getElementById('btn-modo-oscuro');
-
-btnModoOscuro.addEventListener('click', function () {
-    document.body.classList.toggle('modo-oscuro');
-
-    // Cambiamos el icono del boton segun el modo activo
-    if (document.body.classList.contains('modo-oscuro')) {
-        btnModoOscuro.textContent = '☀️';
-    } else {
-        btnModoOscuro.textContent = '🌙';
-    }
-});

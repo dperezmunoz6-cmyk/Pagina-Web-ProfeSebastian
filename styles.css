@@ -1,16 +1,16 @@
 /* =======================================================
-   TOKENS DE DISEÑO — paleta "cromo + azul" estilo Frutiger Aero
+   TOKENS DE DISEÑO — paleta neo-noir "cazarrecompensas"
    ======================================================= */
 :root{
-    --cromo-claro: #eef3f7;
-    --cromo-medio: #c7d3dc;
-    --cromo-sombra: #8fa3b3;
-    --azul-cielo: #3ab6e8;
-    --azul-profundo: #0a4d8c;
-    --vidrio: rgba(255,255,255,0.55);
-    --vidrio-fuerte: rgba(255,255,255,0.8);
-    --brillo-agua: #baf7ff;
-    --texto-oscuro: #1b2b38;
+    --negro-espacio: #0a0d12;
+    --azul-noche: #121823;
+    --panel: #171f2b;
+    --cian-holograma: #5fd6e0;
+    --cian-suave: rgba(95,214,224,0.35);
+    --ambar: #e8923c;
+    --ambar-fuerte: #ff7a1a;
+    --texto-claro: #dfe6ec;
+    --texto-tenue: #8695a3;
 }
 
 /* RESET GENERAL */
@@ -22,124 +22,68 @@
 
 /* ESTILO GENERAL DEL SITIO */
 body{
-    background: linear-gradient(180deg, #bfe6f7 0%, #eef3f7 35%, #f6f9fb 100%);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: var(--texto-oscuro);
-    transition: background 0.4s ease, color 0.4s ease;
-    overflow-x: hidden;
+    background:
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 3px),
+        radial-gradient(circle at 50% 0%, #1a2432 0%, var(--negro-espacio) 60%);
+    font-family: 'Rajdhani', 'Segoe UI', Tahoma, sans-serif;
+    color: var(--texto-claro);
     position: relative;
+    overflow-x: hidden;
+}
+
+h1, h2{
+    font-family: 'Orbitron', 'Segoe UI', sans-serif;
 }
 
 /* =======================================================
-   HEADER — vidrio azul con nubes y destello de luz
+   HEADER — panel oscuro con barrido de escaneo
    ======================================================= */
 header{
-    background: linear-gradient(160deg, #1b78c4 0%, var(--azul-profundo) 55%, #08345f 100%);
-    color: white;
-    height: 130px;
+    background: linear-gradient(180deg, #0d1218, var(--azul-noche));
+    color: var(--cian-holograma);
+    height: 120px;
     text-align: center;
-    line-height: 130px;
-    font-size: 30px;
-    font-weight: bold;
+    line-height: 120px;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 3px;
     position: relative;
     overflow: hidden;
-    box-shadow: inset 0 -6px 14px rgba(0,0,0,0.25), 0 3px 10px rgba(0,0,0,0.2);
+    border-bottom: 1px solid var(--cian-suave);
+    box-shadow: 0 0 25px rgba(95,214,224,0.15);
 }
 
 header h1{
     position: relative;
-    z-index: 3;
-    text-shadow: 0 2px 2px rgba(0,0,0,0.4), 0 0 18px rgba(186,247,255,0.6);
-    letter-spacing: 0.5px;
-}
-
-/* Destello de luz tipo "lens flare" en la esquina superior derecha */
-.destello{
-    position: absolute;
-    top: -60px;
-    right: -40px;
-    width: 220px;
-    height: 220px;
-    background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.25) 35%, rgba(255,255,255,0) 70%);
-    border-radius: 50%;
-    z-index: 1;
-    pointer-events: none;
-}
-
-/* Nubes de CSS puro: cada una son 3 circulos pegados */
-.nube{
-    position: absolute;
-    background: rgba(255,255,255,0.35);
-    border-radius: 50px;
     z-index: 2;
-    pointer-events: none;
+    text-shadow: 0 0 10px rgba(95,214,224,0.8), 0 0 25px rgba(95,214,224,0.4);
 }
-.nube::before, .nube::after{
-    content: "";
+
+/* Barrido de luz que cruza el header como un escaneo de radar */
+.barrido{
     position: absolute;
-    background: rgba(255,255,255,0.35);
-    border-radius: 50%;
+    top: 0;
+    left: -40%;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(95,214,224,0.12), transparent);
+    animation: escanear 6s ease-in-out infinite;
+    z-index: 1;
 }
 
-.nube-1{
-    width: 90px; height: 30px; top: 20px; left: -120px;
-    animation: flotar-nube 28s linear infinite;
-}
-.nube-1::before{ width: 45px; height: 45px; top: -20px; left: 10px; }
-.nube-1::after{ width: 35px; height: 35px; top: -14px; left: 45px; }
-
-.nube-2{
-    width: 60px; height: 22px; top: 70px; left: -90px;
-    animation: flotar-nube 40s linear infinite;
-    animation-delay: -12s;
-}
-.nube-2::before{ width: 30px; height: 30px; top: -14px; left: 8px; }
-.nube-2::after{ width: 24px; height: 24px; top: -10px; left: 30px; }
-
-.nube-3{
-    width: 75px; height: 26px; top: 10px; left: -100px;
-    animation: flotar-nube 34s linear infinite;
-    animation-delay: -22s;
-}
-.nube-3::before{ width: 38px; height: 38px; top: -16px; left: 8px; }
-.nube-3::after{ width: 28px; height: 28px; top: -10px; left: 38px; }
-
-@keyframes flotar-nube{
-    from{ transform: translateX(0); }
-    to{ transform: translateX(160vw); }
-}
-
-/* Boton modo oscuro */
-.btn-modo-oscuro{
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 4;
-    background: linear-gradient(180deg, rgba(255,255,255,0.75), rgba(255,255,255,0.15));
-    border: 1px solid rgba(255,255,255,0.6);
-    color: var(--azul-profundo);
-    font-size: 20px;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    cursor: pointer;
-    line-height: normal;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3), inset 0 1px 2px rgba(255,255,255,0.9);
-}
-
-.btn-modo-oscuro:hover{
-    transform: translateY(-50%) scale(1.08);
+@keyframes escanear{
+    0%{ left: -40%; }
+    50%{ left: 100%; }
+    100%{ left: 100%; }
 }
 
 /* =======================================================
-   MENU DE NAVEGACION — barra cromada con botones "gel"
+   MENU DE NAVEGACION — barra tipo consola holografica
    ======================================================= */
 nav{
-    background: linear-gradient(180deg, var(--cromo-claro) 0%, var(--cromo-medio) 50%, var(--cromo-sombra) 100%);
-    height: 56px;
-    border-bottom: 2px solid #6d8494;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.8);
+    background: var(--panel);
+    height: 54px;
+    border-bottom: 1px solid var(--cian-suave);
     position: relative;
     z-index: 5;
 }
@@ -153,36 +97,35 @@ nav ul{
 nav ul li{
     float: left;
     list-style: none;
-    margin: 9px 8px;
+    margin: 9px 6px;
     line-height: 30px;
 }
 
 nav ul li a{
     display: block;
     padding: 0 16px;
-    color: #0a3a66;
+    color: var(--texto-tenue);
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
     font-size: 14px;
-    border-radius: 16px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.3) 45%, rgba(255,255,255,0.1) 55%, rgba(200,225,240,0.4) 100%);
-    border: 1px solid rgba(255,255,255,0.7);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.9);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    border: 1px solid transparent;
     transition: all 0.2s ease;
 }
 
 nav ul li a:hover{
-    color: #06294a;
-    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.5) 45%, var(--brillo-agua) 100%);
-    box-shadow: 0 3px 6px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,1);
-    transform: translateY(-1px);
+    color: var(--cian-holograma);
+    border: 1px solid var(--cian-suave);
+    box-shadow: 0 0 12px rgba(95,214,224,0.3);
 }
 
 /* Enlace activo (la seccion que estamos viendo ahora) - lo controla script.js */
 nav ul li a.activo{
-    background: linear-gradient(180deg, #7fe0ff 0%, var(--azul-cielo) 60%, var(--azul-profundo) 100%);
-    color: white;
-    text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+    color: var(--negro-espacio);
+    background: var(--cian-holograma);
+    box-shadow: 0 0 14px rgba(95,214,224,0.7);
 }
 
 /* LIMPIAR FLOTANTES */
@@ -190,7 +133,7 @@ nav ul li a.activo{
     clear: both;
 }
 
-/* Contenedor que centra el bloque de contenido+aside en pantallas grandes */
+/* Contenedor que centra el bloque de contenido en pantallas grandes */
 .contenedor{
     max-width: 1100px;
     margin: 0 auto;
@@ -198,74 +141,118 @@ nav ul li a.activo{
 }
 
 /* =======================================================
-   CONTENIDO PRINCIPAL — panel vidrioso
+   CONTENIDO PRINCIPAL — tarjetas de objetivo, centradas
    ======================================================= */
 #content{
     width: 100%;
-    background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(240,248,252,0.85));
-    min-height: 500px;
-    padding: 25px;
-    border-radius: 14px;
-    margin: 18px 0;
-    box-shadow: 0 6px 20px rgba(10,77,140,0.15), inset 0 1px 0 rgba(255,255,255,0.9);
-    border: 1px solid rgba(255,255,255,0.8);
-    position: relative;
-    z-index: 2;
-}
-
-/* Las 3 tarjetas de imagen en fila (se acomodan solas en pantallas chicas) */
-#content{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 18px;
+    gap: 22px;
+    min-height: 500px;
+    padding: 30px 10px;
+    margin: 18px 0;
 }
 
-/* ARTICULOS: cada uno como una "tarjeta de cristal" con marco cromado,
-   todo centrado adentro (titulo, imagen y texto) */
+/* Cada tarjeta: ficha de objetivo con marco holografico */
 .article{
-    color: var(--texto-oscuro);
+    position: relative;
     flex: 1 1 220px;
     max-width: 280px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    padding: 16px;
-    border-radius: 10px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(210,230,245,0.35));
-    border: 1px solid rgba(255,255,255,0.9);
-    border-bottom: 3px solid var(--cromo-sombra);
-    box-shadow: 0 3px 10px rgba(10,77,140,0.08);
+    color: var(--texto-claro);
+    padding: 20px 16px;
+    border-radius: 4px;
+    background: linear-gradient(180deg, var(--panel), #0f141c);
+    border: 1px solid var(--cian-suave);
+    box-shadow: 0 0 18px rgba(0,0,0,0.5), inset 0 0 20px rgba(95,214,224,0.04);
     text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.article:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 6px 22px rgba(95,214,224,0.2);
+}
+
+/* Sello decorativo "SE BUSCA" en la esquina */
+.sello{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: var(--ambar);
+    border: 1px solid var(--ambar);
+    padding: 3px 8px;
+    border-radius: 2px;
+    transform: rotate(4deg);
+    text-shadow: 0 0 6px rgba(232,146,60,0.6);
 }
 
 .article h2{
-    color: var(--azul-profundo);
-    text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+    color: var(--cian-holograma);
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin: 6px 0 14px 0;
+}
+
+/* Marco tipo "proyeccion de holograma" con esquinas de mira */
+.marco-holograma{
+    position: relative;
+    display: inline-block;
+    padding: 10px;
     margin-bottom: 10px;
 }
 
-.article img{
+.marco-holograma::before,
+.marco-holograma::after,
+.marco-holograma img{
     display: block;
-    margin: 0 auto 10px auto;
+}
+
+.marco-holograma::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px solid var(--cian-suave);
+    box-shadow: inset 0 0 15px rgba(95,214,224,0.15);
+}
+
+/* Las 4 esquinas de mira (estilo radar/targeting) */
+.marco-holograma::after{
+    content: "";
+    position: absolute;
+    top: -2px; left: -2px; right: -2px; bottom: -2px;
+    background:
+        linear-gradient(var(--cian-holograma), var(--cian-holograma)) top left / 14px 2px no-repeat,
+        linear-gradient(var(--cian-holograma), var(--cian-holograma)) top left / 2px 14px no-repeat,
+        linear-gradient(var(--cian-holograma), var(--cian-holograma)) top right / 14px 2px no-repeat,
+        linear-gradient(var(--cian-holograma), var(--cian-holograma)) top right / 2px 14px no-repeat,
+        linear-gradient(var(--cian-holograma), var(--cian-holograma)) bottom left / 14px 2px no-repeat,
+        linear-gradient(var(--cian-holograma), var(--cian-holograma)) bottom left / 2px 14px no-repeat,
+        linear-gradient(var(--cian-holograma), var(--cian-holograma)) bottom right / 14px 2px no-repeat,
+        linear-gradient(var(--cian-holograma), var(--cian-holograma)) bottom right / 2px 14px no-repeat;
+    pointer-events: none;
 }
 
 .article p{
-    margin-top: 4px;
+    color: var(--texto-tenue);
+    font-size: 14px;
 }
 
 /* =======================================================
-   BARRA LATERAL — panel de cromo con reflejo de vidrio
+   BARRA DE BUSQUEDA — consola horizontal de base de datos
    ======================================================= */
 aside{
     width: 100%;
-    background: linear-gradient(100deg, #4fc3ea 0%, var(--azul-cielo) 45%, var(--azul-profundo) 100%);
-    color: white;
-    padding: 20px 28px;
+    background: var(--panel);
+    color: var(--texto-claro);
+    padding: 18px 26px;
     margin: 0 0 18px 0;
-    border-radius: 14px;
-    box-shadow: 0 6px 20px rgba(10,77,140,0.25), inset 0 1px 0 rgba(255,255,255,0.5);
-    position: relative;
-    overflow: hidden;
+    border-radius: 4px;
+    border: 1px solid var(--cian-suave);
+    box-shadow: 0 0 16px rgba(0,0,0,0.4);
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -274,30 +261,14 @@ aside{
 
 aside h2{
     flex: 0 0 auto;
-    font-size: 18px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: var(--cian-holograma);
     white-space: nowrap;
+    text-transform: uppercase;
 }
 
-/* Reflejo de vidrio diagonal sobre la barra lateral */
-aside::before{
-    content: "";
-    position: absolute;
-    top: -20%;
-    left: -40%;
-    width: 60%;
-    height: 160%;
-    background: rgba(255,255,255,0.25);
-    transform: rotate(20deg);
-    pointer-events: none;
-}
-
-aside h2{
-    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-    position: relative;
-    z-index: 2;
-}
-
-/* --- Formulario de busqueda: ahora en fila (horizontal) --- */
+/* --- Formulario de busqueda: en fila (horizontal) --- */
 #form-busqueda{
     position: relative;
     z-index: 2;
@@ -309,66 +280,70 @@ aside h2{
 #input-busqueda{
     flex: 1 1 auto;
     padding: 9px 14px;
-    border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.7);
-    background: rgba(255,255,255,0.85);
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.25);
+    border-radius: 2px;
+    border: 1px solid var(--cian-suave);
+    background: #0c1117;
+    color: var(--texto-claro);
+    font-family: 'Rajdhani', sans-serif;
+}
+
+#input-busqueda::placeholder{
+    color: var(--texto-tenue);
+}
+
+#input-busqueda:focus{
+    outline: none;
+    box-shadow: 0 0 8px rgba(95,214,224,0.5);
 }
 
 aside input[type="submit"]{
     flex: 0 0 auto;
-    background: linear-gradient(180deg, #ffffff 0%, #d7e9f5 45%, #9fc9e3 55%, #5ea8cf 100%);
-    color: var(--azul-profundo);
-    font-weight: bold;
-    border: 1px solid rgba(255,255,255,0.8);
-    padding: 9px 20px;
-    border-radius: 20px;
+    background: transparent;
+    color: var(--ambar);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: 1px solid var(--ambar);
+    padding: 9px 22px;
+    border-radius: 2px;
     cursor: pointer;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.9);
-    transition: transform 0.15s ease;
+    transition: all 0.2s ease;
 }
 
 aside input[type="submit"]:hover{
-    transform: translateY(-1px);
-}
-
-aside input[type="submit"]:active{
-    transform: translateY(1px);
+    background: var(--ambar);
+    color: var(--negro-espacio);
+    box-shadow: 0 0 14px rgba(232,146,60,0.5);
 }
 
 .mensaje-busqueda{
     flex: 1 0 100%;
     margin-top: 2px;
     font-size: 14px;
-    font-weight: bold;
-    position: relative;
-    z-index: 2;
+    font-weight: 600;
 }
 
-.mensaje-busqueda.error{ color: #ffd9d9; }
-.mensaje-busqueda.exito{ color: #d9fff0; }
+.mensaje-busqueda.error{ color: #ff8a8a; }
+.mensaje-busqueda.exito{ color: var(--cian-holograma); }
 
 /* =======================================================
-   GALERIA DE IMAGENES
+   GALERIA DE IMAGENES / LIGHTBOX
    ======================================================= */
 .img-galeria{
     cursor: zoom-in;
-    border-radius: 8px;
-    border: 3px solid white;
-    box-shadow: 0 3px 10px rgba(10,77,140,0.25);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    filter: saturate(0.9) contrast(1.05);
+    transition: filter 0.2s ease;
 }
 
 .img-galeria:hover{
-    transform: scale(1.04) rotate(-1deg);
-    box-shadow: 0 6px 16px rgba(10,77,140,0.35);
+    filter: saturate(1.1) contrast(1.1) brightness(1.05);
 }
 
 .lightbox{
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(5,25,45,0.88);
+    background: rgba(5,8,12,0.92);
     z-index: 1000;
     justify-content: center;
     align-items: center;
@@ -380,54 +355,57 @@ aside input[type="submit"]:active{
 .lightbox img{
     max-width: 90%;
     max-height: 85%;
-    border-radius: 10px;
-    border: 4px solid white;
-    box-shadow: 0 0 35px rgba(186,247,255,0.5);
+    border: 1px solid var(--cian-holograma);
+    box-shadow: 0 0 40px rgba(95,214,224,0.4);
 }
 
 /* =======================================================
-   BOTON FLOTANTE "VOLVER ARRIBA" — orbe de gel
+   BOTON FLOTANTE "VOLVER ARRIBA"
    ======================================================= */
 .btn-arriba{
     position: fixed;
     bottom: 25px;
     right: 25px;
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
-    border: 1px solid rgba(255,255,255,0.8);
-    background: linear-gradient(180deg, #ffffff 0%, #8fd9f5 45%, var(--azul-cielo) 60%, var(--azul-profundo) 100%);
-    color: white;
-    font-size: 20px;
+    border: 1px solid var(--cian-holograma);
+    background: var(--panel);
+    color: var(--cian-holograma);
+    font-size: 18px;
     cursor: pointer;
     display: none;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.9);
+    box-shadow: 0 0 14px rgba(95,214,224,0.4);
     z-index: 900;
-    transition: transform 0.15s ease;
+    transition: transform 0.15s ease, box-shadow 0.2s ease;
 }
 
 .btn-arriba.visible{ display: block; }
-.btn-arriba:hover{ transform: scale(1.08); }
 
-/* =======================================================
-   FOOTER — tira de metal cepillado
-   ======================================================= */
-footer{
-    background: repeating-linear-gradient(100deg, #cfd9e0, #cfd9e0 2px, #e4ebf0 3px, #e4ebf0 4px), linear-gradient(180deg, #d6dee4, #9aacb8);
-    color: var(--azul-profundo);
-    text-align: center;
-    height: 54px;
-    line-height: 54px;
-    margin-top: 10px;
-    font-weight: bold;
-    text-shadow: 0 1px 0 rgba(255,255,255,0.6);
-    border-top: 1px solid rgba(255,255,255,0.8);
+.btn-arriba:hover{
+    transform: scale(1.08);
+    box-shadow: 0 0 20px rgba(95,214,224,0.7);
 }
 
 /* =======================================================
-   CAPA DE BURBUJAS ANIMADAS (las crea script.js)
+   FOOTER — consola inferior
    ======================================================= */
-.capa-burbujas{
+footer{
+    background: #0a0e14;
+    color: var(--texto-tenue);
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    margin-top: 10px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    border-top: 1px solid var(--cian-suave);
+}
+
+/* =======================================================
+   CAPA DE PARTICULAS (estatica/polvo de datos flotando)
+   ======================================================= */
+.capa-particulas{
     position: fixed;
     inset: 0;
     width: 100%;
@@ -437,67 +415,27 @@ footer{
     z-index: 1;
 }
 
-.burbuja{
+.particula{
     position: absolute;
-    bottom: -60px;
+    top: -10px;
+    background: var(--cian-holograma);
     border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.95), rgba(186,247,255,0.35) 45%, rgba(58,182,232,0.15) 75%, transparent 100%);
-    border: 1px solid rgba(255,255,255,0.5);
-    animation-name: subir-burbuja;
+    animation-name: caer-particula;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
 }
 
-@keyframes subir-burbuja{
-    0%{ transform: translateY(0) translateX(0); opacity: 0; }
-    10%{ opacity: 0.9; }
-    90%{ opacity: 0.6; }
-    100%{ transform: translateY(-115vh) translateX(20px); opacity: 0; }
+@keyframes caer-particula{
+    0%{ transform: translateY(0); opacity: 0; }
+    8%{ opacity: 0.6; }
+    92%{ opacity: 0.3; }
+    100%{ transform: translateY(110vh); opacity: 0; }
 }
 
 /* =======================================================
-   MODO OSCURO AERO — azul noche profundo en vez de blanco/cromo
-   ======================================================= */
-body.modo-oscuro{
-    background: linear-gradient(180deg, #06182c 0%, #0a2744 45%, #0f3357 100%);
-    color: #dceefb;
-}
-
-body.modo-oscuro #content{
-    background: linear-gradient(180deg, rgba(16,40,64,0.9), rgba(10,30,52,0.9));
-    border-color: rgba(255,255,255,0.15);
-}
-
-body.modo-oscuro .article{
-    background: linear-gradient(180deg, rgba(40,70,100,0.5), rgba(20,45,70,0.4));
-    border-bottom-color: #2f5878;
-}
-
-body.modo-oscuro .article h2,
-body.modo-oscuro #content h2{
-    color: var(--brillo-agua);
-}
-
-body.modo-oscuro nav{
-    background: linear-gradient(180deg, #1c3a52, #0d2238);
-    border-bottom-color: #05141f;
-}
-
-body.modo-oscuro nav ul li a{
-    background: linear-gradient(180deg, rgba(255,255,255,0.15), rgba(255,255,255,0.03));
-    color: var(--brillo-agua);
-    border-color: rgba(255,255,255,0.2);
-}
-
-/* =======================================================
-   RESPONSIVE — que no se rompa en pantallas pequeñas
+   RESPONSIVE
    ======================================================= */
 @media (max-width: 700px){
-    #content, aside{
-        float: none;
-        width: auto;
-        margin: 14px;
-    }
     nav ul{
         flex-wrap: wrap;
         height: auto;
@@ -507,8 +445,9 @@ body.modo-oscuro nav ul li a{
         margin: 4px 6px;
     }
     header{
-        height: 110px;
-        line-height: 110px;
-        font-size: 22px;
+        height: 100px;
+        line-height: 100px;
+        font-size: 20px;
+        letter-spacing: 1px;
     }
 }
