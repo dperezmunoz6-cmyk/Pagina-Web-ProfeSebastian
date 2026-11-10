@@ -141,6 +141,31 @@ nav ul li a.activo{
 }
 
 /* =======================================================
+   TITULO DE SECCION — estilo "encabezado de expediente",
+   con una linea a cada lado del texto
+   ======================================================= */
+.titulo-seccion{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 26px 0 10px 0;
+    font-size: 18px;
+    letter-spacing: 3px;
+    color: var(--ambar);
+    text-shadow: 0 0 10px rgba(232,146,60,0.5);
+}
+
+.titulo-seccion::before,
+.titulo-seccion::after{
+    content: "";
+    flex: 1 1 auto;
+    height: 1px;
+    max-width: 160px;
+    background: linear-gradient(90deg, transparent, var(--ambar), transparent);
+}
+
+/* =======================================================
    CONTENIDO PRINCIPAL — tarjetas de objetivo, centradas
    ======================================================= */
 #content{
@@ -325,6 +350,27 @@ aside input[type="submit"]:hover{
 
 .mensaje-busqueda.error{ color: #ff8a8a; }
 .mensaje-busqueda.exito{ color: var(--cian-holograma); }
+
+/* =======================================================
+   SECCION EXTRA (ej: Requisitos) — mismo panel que el resto
+   ======================================================= */
+.seccion-extra{
+    background: linear-gradient(180deg, var(--panel), #0f141c);
+    border: 1px solid var(--cian-suave);
+    border-radius: 4px;
+    padding: 24px 28px;
+    margin: 0 0 18px 0;
+    box-shadow: 0 0 18px rgba(0,0,0,0.5);
+}
+
+.seccion-extra .titulo-seccion{
+    margin-top: 0;
+}
+
+.seccion-extra p{
+    color: var(--texto-tenue);
+    line-height: 1.6;
+}
 
 /* =======================================================
    GALERIA DE IMAGENES / LIGHTBOX
