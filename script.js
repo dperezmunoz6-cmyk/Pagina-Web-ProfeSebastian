@@ -28,7 +28,7 @@ enlacesNav.forEach(function (enlace) {
 
 // Mientras el usuario hace scroll, revisamos en que seccion esta
 // y le ponemos la clase "activo" al enlace correspondiente del menu.
-const secciones = document.querySelectorAll('#inicio, #content');
+const secciones = document.querySelectorAll('#inicio, #content, #requisitos');
 
 function actualizarEnlaceActivo() {
     let seccionActual = '';
