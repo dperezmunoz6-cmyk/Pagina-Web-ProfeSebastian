@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<title>Portal de Recompensas</title>
+<title>Portal de Cazarrecompensas</title>
 <!-- Fuentes de estilo sci-fi / holograma -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
@@ -15,7 +15,7 @@
     <!-- Barrido de escaneo tipo holograma -->
     <div class="barrido"></div>
 
-    <h1>Portal de Recompensas</h1>
+    <h1>Portal de Cazarrecompensas</h1>
 </header>
 
 <!-- Capa de particulas/estatica flotando por toda la pagina (las crea script.js) -->
@@ -25,7 +25,7 @@
     <ul>
         <li><a href="#inicio" class="nav-link">Inicio</a></li>
         <li><a href="#content" class="nav-link">Contenido</a></li>
-        <li><a href="#">Requisitos</a></li>
+        <li><a href="#requisitos" class="nav-link">Requisitos</a></li>
         <li><a href="#">Lenguajes</a></li>
         <li><a href="#">Frameworks</a></li>
         <li><a href="#">Proyectos</a></li>
@@ -37,31 +37,33 @@
 <!-- Este contenedor centra el bloque de contenido+aside y le pone un ancho maximo -->
 <div class="contenedor">
 
+    <h2 class="titulo-seccion"><span>LOS MÁS BUSCADOS</span></h2>
+
     <section id="content">
 
         <article class="article">
             <span class="sello">SE BUSCA</span>
-            <h2>$225.000.000</h2>
+            <h2>Imagen 1</h2>
             <div class="marco-holograma">
-                <img src="Petrowsky.png" style="width:200px; height:250px;" class="img-galeria">
+                <img src="bandera.png" style="width:250px; height:100px;" class="img-galeria">
             </div>
-            <p>Descripcion</p>
+            <p>Si si Colombia, si si caribe...</p>
         </article>
 
         <article class="article">
             <span class="sello">SE BUSCA</span>
-            <h2>$75.000.000</h2>
+            <h2>Imagen 2</h2>
             <div class="marco-holograma">
-                <img src="odst.png" style="width:200px; height:250px;" class="img-galeria">
+                <img src="odst.png" style="width:250px; height:250px;" class="img-galeria">
             </div>
-            <p>Descripcion</p>
+            <p>El Covenant se acerca</p>
         </article>
 
         <article class="article">
             <span class="sello">SE BUSCA</span>
-            <h2>$130.500.000</h2>
+            <h2>Imagen 3</h2>
             <div class="marco-holograma">
-                <img src="pg.png" style="width:200px; height:250px;" class="img-galeria">
+                <img src="pg.png" style="width:250px; height:250px;" class="img-galeria">
             </div>
             <p>Pingüino</p>
         </article>
@@ -80,6 +82,12 @@
         <!-- Aqui aparecera el mensaje de error o resultado -->
         <p id="mensaje-busqueda" class="mensaje-busqueda"></p>
     </aside>
+
+    <!-- Seccion de Requisitos: escribe aqui tu texto personalizado -->
+    <section id="requisitos" class="seccion-extra">
+        <h2 class="titulo-seccion"><span>REQUISITOS</span></h2>
+        <p>Aqui puedes escribir el texto de requisitos que quieras agregar.</p>
+    </section>
 
 </div>
 
