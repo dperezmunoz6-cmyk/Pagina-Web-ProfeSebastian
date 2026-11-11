@@ -292,8 +292,9 @@ nav ul li a.activo{
 }
 
 .article p{
-    color: var(--texto-tenue);
+    color: #7a94ad;
     font-size: 14px;
+    text-shadow: 0 0 4px rgba(111, 179, 217, 0.3);
 }
 
 /* =======================================================
