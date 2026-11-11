@@ -97,8 +97,8 @@ header h1{
     font-weight: 600;
     font-size: 13px;
     letter-spacing: 1px;
-    color: var(--cian-holograma);
-    text-shadow: 0 0 6px rgba(95,214,224,0.4);
+    color: #f5d742;
+    text-shadow: 0 0 6px rgba(245, 215, 66, 0.5);
     animation: deslizar-ticker 32s linear infinite;
 }
 
