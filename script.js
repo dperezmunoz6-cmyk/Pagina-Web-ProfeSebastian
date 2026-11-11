@@ -59,22 +59,26 @@ const formBusqueda = document.getElementById('form-busqueda');
 const inputBusqueda = document.getElementById('input-busqueda');
 const mensajeBusqueda = document.getElementById('mensaje-busqueda');
 
-formBusqueda.addEventListener('submit', function (evento) {
-    evento.preventDefault(); // esta pagina no tiene un backend real, asi que controlamos nosotros el envio
+// Solo activamos esto si la pagina actual tiene barra de busqueda
+// (por ejemplo, "casos-cerrados.html" no la tiene, y no queremos que truene el script)
+if (formBusqueda) {
+    formBusqueda.addEventListener('submit', function (evento) {
+        evento.preventDefault(); // esta pagina no tiene un backend real, asi que controlamos nosotros el envio
 
-    const texto = inputBusqueda.value.trim();
+        const texto = inputBusqueda.value.trim();
 
-    if (texto === '') {
-        // Caso 1: el usuario no escribio nada
-        mensajeBusqueda.textContent = 'Por favor escribe algo antes de buscar.';
-        mensajeBusqueda.className = 'mensaje-busqueda error';
-    } else {
-        // Caso 2: hay texto, mostramos un mensaje de "exito"
-        mensajeBusqueda.textContent = 'Buscando: "' + texto + '"...';
-        mensajeBusqueda.className = 'mensaje-busqueda exito';
-        inputBusqueda.value = '';
-    }
-});
+        if (texto === '') {
+            // Caso 1: el usuario no escribio nada
+            mensajeBusqueda.textContent = 'Por favor escribe algo antes de buscar.';
+            mensajeBusqueda.className = 'mensaje-busqueda error';
+        } else {
+            // Caso 2: hay texto, mostramos un mensaje de "exito"
+            mensajeBusqueda.textContent = 'Buscando: "' + texto + '"...';
+            mensajeBusqueda.className = 'mensaje-busqueda exito';
+            inputBusqueda.value = '';
+        }
+    });
+}
 
 
 /* -------------------------------------------------------
@@ -132,6 +136,8 @@ btnArriba.addEventListener('click', function () {
 const capaParticulas = document.getElementById('capa-particulas');
 const CANTIDAD_PARTICULAS = 35;
 
+// Por si alguna pagina no tuviera esta capa, no truena el script
+if (capaParticulas) {
 for (let i = 0; i < CANTIDAD_PARTICULAS; i++) {
     const particula = document.createElement('div');
     particula.classList.add('particula');
@@ -151,4 +157,5 @@ for (let i = 0; i < CANTIDAD_PARTICULAS; i++) {
     particula.style.animationDelay = '-' + retraso + 's';
 
     capaParticulas.appendChild(particula);
+}
 }

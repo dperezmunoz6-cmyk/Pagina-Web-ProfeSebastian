@@ -78,6 +78,36 @@ header h1{
 }
 
 /* =======================================================
+   TICKER DE NOTICIAS — franja de transmision deslizante
+   ======================================================= */
+.ticker{
+    width: 100%;
+    overflow: hidden;
+    background: #0c1117;
+    border-bottom: 1px solid var(--cian-suave);
+    white-space: nowrap;
+    position: relative;
+    z-index: 4;
+}
+
+.ticker-texto{
+    display: inline-block;
+    padding: 7px 0;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: var(--cian-holograma);
+    text-shadow: 0 0 6px rgba(95,214,224,0.4);
+    animation: deslizar-ticker 32s linear infinite;
+}
+
+@keyframes deslizar-ticker{
+    from{ transform: translateX(0); }
+    to{ transform: translateX(-50%); }
+}
+
+/* =======================================================
    MENU DE NAVEGACION — barra tipo consola holografica
    ======================================================= */
 nav{
@@ -350,6 +380,20 @@ aside input[type="submit"]:hover{
 
 .mensaje-busqueda.error{ color: #ff8a8a; }
 .mensaje-busqueda.exito{ color: var(--cian-holograma); }
+
+/* =======================================================
+   CASOS CERRADOS — version "archivada" de las tarjetas
+   ======================================================= */
+.articulo-cerrado{
+    opacity: 0.75;
+    filter: grayscale(0.4);
+}
+
+.sello-cerrado{
+    color: #7fe08a;
+    border-color: #7fe08a;
+    text-shadow: 0 0 6px rgba(127,224,138,0.6);
+}
 
 /* =======================================================
    SECCION EXTRA (ej: Requisitos) — mismo panel que el resto
